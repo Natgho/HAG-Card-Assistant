@@ -1,2 +1,1 @@
 # HAG Card Assistant
-
