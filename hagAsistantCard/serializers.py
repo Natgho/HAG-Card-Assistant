@@ -22,5 +22,7 @@ class ArticleSerializer(serializers.HyperlinkedModelSerializer):
             'image2_url',
             'video_link',
             'content',
+            'category',
             'lang',
-            'author']
+            'author',
+        ]

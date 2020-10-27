@@ -11,10 +11,11 @@ class Articles(models.Model):
     image2_url = models.URLField(max_length=255)
     video_link = models.URLField(max_length=255)
     content = HTMLField()
-    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    author = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
     lang = models.CharField(max_length=10)
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
+    category = models.CharField(max_length=255)
 
     def __str__(self):
         return self.title
