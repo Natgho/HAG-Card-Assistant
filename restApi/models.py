@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from tinymce.models import HTMLField
 
 
 # Create your models here.
@@ -9,7 +10,7 @@ class Articles(models.Model):
     image1_url = models.URLField(max_length=255)
     image2_url = models.URLField(max_length=255)
     video_link = models.URLField(max_length=255)
-    content = models.TextField()
+    content = HTMLField()
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     lang = models.CharField(max_length=10)
     created = models.DateTimeField(auto_now_add=True)

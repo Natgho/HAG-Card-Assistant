@@ -23,6 +23,7 @@ router.register('articles', views.ArticleViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),
+    path('tinymce/', include('tinymce.urls')),
     path('admin/', admin.site.urls),
     path('api-auth/', include('rest_framework.urls'))
 ]
