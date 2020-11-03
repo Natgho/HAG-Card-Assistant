@@ -1,7 +1,7 @@
 # Created by SezerBozkir<admin@sezerbozkir.com> at 10/23/2020
 from django.contrib.auth.models import User
 
-from restApi.models import Articles
+from restApi.models import Article
 from rest_framework import serializers
 
 
@@ -15,14 +15,12 @@ class ArticleSerializer(serializers.HyperlinkedModelSerializer):
     author = UserSerializer()
 
     class Meta:
-        model = Articles
+        model = Article
         fields = [
             'title',
             'image1_url',
             'image2_url',
             'video_link',
             'content',
-            'category',
             'lang',
-            'author',
-        ]
+            'author']
