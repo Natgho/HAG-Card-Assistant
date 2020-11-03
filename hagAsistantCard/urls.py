@@ -19,7 +19,7 @@ from rest_framework import routers
 from restApi import views
 
 router = routers.DefaultRouter()
-router.register('articles', views.ArticleViewSet)
+router.register('article', views.ArticleViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),
