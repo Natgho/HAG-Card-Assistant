@@ -83,17 +83,9 @@ if os.path.isfile(dotenv_file):
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
-
-if os.environ.get('DATABASE_URL'):
-    print(os.environ.get('DATABASE_URL'))
-    DATABASES = {
-        'default': dj_database_url.config(conn_max_age=600)
-    }
-else:
-    DATABASES = {
-        'default': dj_database_url.config(conn_max_age=600,
-                                          default=os.environ.get('DATABASE_URL', 'sqlite:///db.sqlite3'))
-    }
+DATABASES = {
+    'default': dj_database_url.config(conn_max_age=600)
+}
 
 REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
@@ -138,8 +130,11 @@ USE_TZ = True
 # STATIC_URL = '/static/'
 # STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
-django_heroku.settings(locals())
-# del DATABASES['default']['OPTIONS']['sslmode']
 
 ALLOWED_HOSTS = ['*']
 CORS_ORIGIN_ALLOW_ALL = True
+django_heroku.settings(locals())
+
+# bug from heroku: https://www.bountysource.com/issues/61047464-heroku-django-mysql-sslmode-not-supported
+if os.environ.get('DATABASE_URL').startswith('sqlite'):
+    del DATABASES['default']['OPTIONS']['sslmode']
