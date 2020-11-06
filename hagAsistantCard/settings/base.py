@@ -15,6 +15,7 @@ from pathlib import Path
 import os
 import django_heroku
 import dotenv
+import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -83,11 +84,16 @@ if os.path.isfile(dotenv_file):
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-import dj_database_url
-
-DATABASES = {
-    'default': dj_database_url.config(conn_max_age=600,
-                                      default=os.environ.get('DATABASE_URL', 'sqlite:///db.sqlite3'))}
+if os.environ.get('DATABASE_URL'):
+    print(os.environ.get('DATABASE_URL'))
+    DATABASES = {
+        'default': dj_database_url.config(conn_max_age=600)
+    }
+else:
+    DATABASES = {
+        'default': dj_database_url.config(conn_max_age=600,
+                                          default=os.environ.get('DATABASE_URL', 'sqlite:///db.sqlite3'))
+    }
 
 REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
