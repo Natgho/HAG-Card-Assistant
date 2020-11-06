@@ -7,11 +7,5 @@
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
       <jdbc-url>jdbc:sqlite:C:\Users\s00500551\PycharmProjects\hagAsistantCard\db.sqlite3</jdbc-url>
     </data-source>
-    <data-source source="LOCAL" name="herokuDB" uuid="390f5fb3-b3cf-4684-84c3-21d2f84886fb">
-      <driver-ref>postgresql</driver-ref>
-      <synchronize>true</synchronize>
-      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
-      <jdbc-url>jdbc:postgresql://ec2-54-228-170-125.eu-west-1.compute.amazonaws.com:5432/d4ii4emk455atg</jdbc-url>
-    </data-source>
   </component>
 </project>
