@@ -19,7 +19,7 @@ class ArticleSerializer(serializers.HyperlinkedModelSerializer):
         fields = [
             'title',
             'image1_url',
-            'image2_url',
+            'description',
             'video_link',
             'content',
             'lang',
