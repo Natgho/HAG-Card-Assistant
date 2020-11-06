@@ -1,3 +1,4 @@
+# Created by SezerBozkir<admin@sezerbozkir.com> at 11/6/2020
 """
 Django settings for hagAsistantCard project.
 
@@ -13,6 +14,8 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 from pathlib import Path
 import os
 import django_heroku
+import dotenv
+import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -22,9 +25,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'fayl4*^^%hg$!w$t*4w*wx81d#^28or3l5u7ka3^rtm76awdw#'
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
 
 ALLOWED_HOSTS = []
 
@@ -77,14 +77,14 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'hagAsistantCard.wsgi.application'
 
+dotenv_file = os.path.join(BASE_DIR, ".env")
+if os.path.isfile(dotenv_file):
+    dotenv.load_dotenv(dotenv_file)
+
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
-
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    'default': dj_database_url.config(conn_max_age=600)
 }
 
 REST_FRAMEWORK = {
@@ -130,7 +130,11 @@ USE_TZ = True
 # STATIC_URL = '/static/'
 # STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
-django_heroku.settings(locals())
 
 ALLOWED_HOSTS = ['*']
 CORS_ORIGIN_ALLOW_ALL = True
+django_heroku.settings(locals())
+
+# bug from heroku: https://www.bountysource.com/issues/61047464-heroku-django-mysql-sslmode-not-supported
+if os.environ.get('DATABASE_URL').startswith('sqlite'):
+    del DATABASES['default']['OPTIONS']['sslmode']
