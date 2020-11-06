@@ -23,8 +23,7 @@ def create_superuser(apps, schema_editor):
     mock_article.title = "HUAWEI Mate40 Series Online Global Launch Event"
     mock_article.image1_url = "https://consumer-img.huawei.com/content/dam/huawei-cbg-site/common/mkt/" + \
                               "pdp/phones/mate40-pro-plus/images/security/unlock/n-plus.jpg"
-    mock_article.image2_url = "https://consumer-img.huawei.com/content/dam/huawei-cbg-site/common/mkt/" + \
-                              "pdp/phones/mate40-pro-plus/images/photo/portrait/intro/n.jpg"
+    mock_article.description = "Sample short description for HAG Card Content."
     mock_article.video_link = "https://youtu.be/oH7H4wnjeYA"
     mock_article.content = ' <iframe width="900" height="506" src="https://www.youtube.com/embed/oH7H4wnjeYA" ' + \
                            'frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media;' + \
@@ -37,8 +36,7 @@ def create_superuser(apps, schema_editor):
     mock_article.title = "HUAWEI Mate40 Serisi Çevrimiçi Küresel Lansman Etkinliği"
     mock_article.image1_url = "https://consumer-img.huawei.com/content/dam/huawei-cbg-site/common/mkt/" + \
                               "pdp/phones/mate40-pro-plus/images/security/unlock/n-plus.jpg"
-    mock_article.image2_url = "https://consumer-img.huawei.com/content/dam/huawei-cbg-site/common/mkt/" + \
-                              "pdp/phones/mate40-pro-plus/images/photo/portrait/intro/n.jpg"
+    mock_article.description = "HAG Kart İçeriği için örnek kısa açıklama."
     mock_article.video_link = "https://youtu.be/oH7H4wnjeYA"
     mock_article.content = ' <iframe width="900" height="506" src="https://www.youtube.com/embed/oH7H4wnjeYA" ' + \
                            'frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media;' + \
@@ -51,8 +49,7 @@ def create_superuser(apps, schema_editor):
     mock_article.title = "Evento de lanzamiento global en línea de la serie HUAWEI Mate40"
     mock_article.image1_url = "https://consumer-img.huawei.com/content/dam/huawei-cbg-site/common/mkt/" + \
                               "pdp/phones/mate40-pro-plus/images/security/unlock/n-plus.jpg"
-    mock_article.image2_url = "https://consumer-img.huawei.com/content/dam/huawei-cbg-site/common/mkt/" + \
-                              "pdp/phones/mate40-pro-plus/images/photo/portrait/intro/n.jpg"
+    mock_article.description = "Ejemplo de descripción breve del contenido de la tarjeta HAG."
     mock_article.video_link = "https://youtu.be/oH7H4wnjeYA"
     mock_article.content = ' <iframe width="900" height="506" src="https://www.youtube.com/embed/oH7H4wnjeYA" ' + \
                            'frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media;' + \
@@ -76,7 +73,7 @@ class Migration(migrations.Migration):
                 ('article_id', models.AutoField(primary_key=True, serialize=False)),
                 ('title', models.CharField(max_length=255)),
                 ('image1_url', models.URLField(max_length=255)),
-                ('image2_url', models.URLField(max_length=255)),
+                ('description', models.URLField(max_length=255)),
                 ('video_link', models.URLField(max_length=255)),
                 ('content', tinymce.models.HTMLField()),
                 ('lang', models.CharField(max_length=10)),
