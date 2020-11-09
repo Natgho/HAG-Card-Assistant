@@ -1,9 +1,9 @@
 # Create your views here.
-from rest_framework import viewsets, permissions, status
-from rest_framework.response import Response
+from rest_framework import viewsets
 
 from hagAsistantCard.serializers import ArticleSerializer
 from restApi.models import Article
+import django_filters.rest_framework
 
 
 class ArticleViewSet(viewsets.ModelViewSet):
@@ -12,6 +12,7 @@ class ArticleViewSet(viewsets.ModelViewSet):
     """
     queryset = Article.objects.all().order_by('article_id')
     serializer_class = ArticleSerializer
+    filter_backends = [django_filters.rest_framework.DjangoFilterBackend]
     # permission_classes = [permissions.IsAuthenticated]
-    lookup_field = 'lang'
+    filterset_fields = ['lang']
     http_method_names = ['get']

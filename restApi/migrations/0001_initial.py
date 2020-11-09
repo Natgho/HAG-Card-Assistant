@@ -19,6 +19,11 @@ def create_superuser(apps, schema_editor):
     superuser.set_password('123')
     superuser.save()
 
+    create_mock_data(superuser)
+    create_mock_data(superuser)
+
+
+def create_mock_data(superuser):
     mock_article = Article()
     mock_article.title = "HUAWEI Mate40 Series Online Global Launch Event"
     mock_article.image1_url = "https://consumer-img.huawei.com/content/dam/huawei-cbg-site/common/mkt/" + \
@@ -73,7 +78,7 @@ class Migration(migrations.Migration):
                 ('article_id', models.AutoField(primary_key=True, serialize=False)),
                 ('title', models.CharField(max_length=255)),
                 ('image1_url', models.URLField(max_length=255)),
-                ('description', models.URLField(max_length=255)),
+                ('description', models.CharField(max_length=255)),
                 ('video_link', models.URLField(max_length=255)),
                 ('content', tinymce.models.HTMLField()),
                 ('lang', models.CharField(max_length=10)),

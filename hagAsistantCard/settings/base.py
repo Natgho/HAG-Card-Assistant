@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'hagAsistantCard',
     'tinymce',
-    'corsheaders'
+    'corsheaders',
+    'django_filters'
 ]
 
 MIDDLEWARE = [
@@ -89,6 +90,7 @@ DATABASES = {
 
 REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
     'PAGE_SIZE': 10,
     'EXCEPTION_HANDLER': 'restApi.utils.custom_exception_handler'
 }

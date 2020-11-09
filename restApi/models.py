@@ -8,7 +8,7 @@ class Article(models.Model):
     article_id = models.AutoField(primary_key=True)
     title = models.CharField(max_length=255)
     image1_url = models.URLField(max_length=255)
-    description = models.URLField(max_length=255)
+    description = models.CharField(max_length=255)
     video_link = models.URLField(max_length=255)
     content = HTMLField()
     author = models.ForeignKey(User, on_delete=models.CASCADE)
