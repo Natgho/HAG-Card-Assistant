@@ -73,7 +73,7 @@ class Migration(migrations.Migration):
                 ('article_id', models.AutoField(primary_key=True, serialize=False)),
                 ('title', models.CharField(max_length=255)),
                 ('image1_url', models.URLField(max_length=255)),
-                ('description', models.URLField(max_length=255)),
+                ('description', models.CharField(max_length=255)),
                 ('video_link', models.URLField(max_length=255)),
                 ('content', tinymce.models.HTMLField()),
                 ('lang', models.CharField(max_length=10)),
