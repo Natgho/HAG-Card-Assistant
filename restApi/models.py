@@ -13,6 +13,7 @@ class Article(models.Model):
     content = HTMLField()
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     lang = models.CharField(max_length=10)
+    category = models.CharField(max_length=255)
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
 
