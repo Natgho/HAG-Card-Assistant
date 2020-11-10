@@ -35,6 +35,7 @@ def create_mock_data(superuser):
                            'gyroscope; picture-in-picture" allowfullscreen></iframe>'
     mock_article.author = superuser
     mock_article.lang = "en"
+    mock_article.category = "General"
     mock_article.save()
 
     mock_article = Article()
@@ -48,6 +49,7 @@ def create_mock_data(superuser):
                            'gyroscope; picture-in-picture" allowfullscreen></iframe>'
     mock_article.author = superuser
     mock_article.lang = "tr"
+    mock_article.category = "Mobile"
     mock_article.save()
 
     mock_article = Article()
@@ -61,6 +63,7 @@ def create_mock_data(superuser):
                            'gyroscope; picture-in-picture" allowfullscreen></iframe>'
     mock_article.author = superuser
     mock_article.lang = "sp"
+    mock_article.category = "Information"
     mock_article.save()
 
 
@@ -82,6 +85,7 @@ class Migration(migrations.Migration):
                 ('video_link', models.URLField(max_length=255)),
                 ('content', tinymce.models.HTMLField()),
                 ('lang', models.CharField(max_length=10)),
+                ('category', models.CharField(max_length=255)),
                 ('created', models.DateTimeField(auto_now_add=True)),
                 ('modified', models.DateTimeField(auto_now=True)),
                 ('author', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
